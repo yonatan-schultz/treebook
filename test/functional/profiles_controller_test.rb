@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProfilesControllerTest < ActionController::TestCase
   test "should find a profile" do
-    get :show, id: users(:jason).profile_name
+    get :show, id: users(:poops).profile_name
     assert_response :success
     assert_template 'profiles/show'
   end
@@ -13,14 +13,14 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test "shows statuses on success" do
-    get :show, id: users(:jason).profile_name
+    get :show, id: users(:poops).profile_name
     assert_not_empty assigns(:statuses)
   end
 
   test "only shows the correct user's statuses" do
-    get :show, id: users(:jason).profile_name
+    get :show, id: users(:poops).profile_name
     assigns(:statuses).each do |status|
-      assert_equal users(:jason), status.user
+      assert_equal users(:poops), status.user
     end
   end
 

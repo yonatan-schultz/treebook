@@ -5,5 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  user: jason
-  friend: jim
+  user: poops
+  friend: pees
+
+two:
+  user: poops
+  user: farts

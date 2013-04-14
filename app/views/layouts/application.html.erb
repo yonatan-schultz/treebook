@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -16,7 +17,7 @@
 				</ul>
 				<ul class="nav pull-right">
 					<% if user_signed_in? %>
-						<li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+						<li><%= link_to "Edit User", edit_user_registration_path %></li>
 						<li><%= link_to "Log Out", logout_path %><li>
 					<% else %>
 						<li><%= link_to "Register", register_path %></li>
@@ -34,8 +35,26 @@
 				<%= message %>
 			</div>
 		<% end %>
-		    
-		<%= yield %>
+				<div class="row">
+			<div class="span2 bs-docs-sidebar">
+				<ul class="nav nav-list bs-docs-sidenav affix">
+						<% if user_signed_in? %>
+							<li><%= link_to "View Feed", feed_path %>
+							<li><%= link_to "Post a New Status", new_status_path %>
+							<li><%= link_to "Edit User", edit_user_registration_path  %>
+							<li><%= link_to "View Profile", feed_path %>
+							<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+						<% else %>
+							<li><%= link_to "Register", register_path %>
+							<li><%= link_to "Log In", login_path %>
+						<% end %>
+				</ul>
+			</div>
+			<div class="span10">
+				<%= yield %>
+			</div>
 	</div>
+
+
 </body>
 </html>

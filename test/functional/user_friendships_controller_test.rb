@@ -12,7 +12,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        sign_in users(:jason)
+        sign_in users(:poops)
       end
 
       should "get new without error" do
@@ -31,23 +31,23 @@ class UserFriendshipsControllerTest < ActionController::TestCase
       end
 
       should "display the friend's name" do
-        get :new, friend_id: users(:jim).id
-        assert_match /#{users(:jim).full_name}/, response.body
+        get :new, friend_id: users(:pees).id
+        assert_match /#{users(:pees).full_name}/, response.body
       end
 
       should "assign a user friendship" do
-        get :new, friend_id: users(:jim).id
+        get :new, friend_id: users(:pees).id
         assert assigns(:user_friendship)
       end
 
       should "assign a user friendship with the user as current user" do
-        get :new, friend_id: users(:jim).id
-        assert_equal assigns(:user_friendship).user, users(:jason)
+        get :new, friend_id: users(:pees).id
+        assert_equal assigns(:user_friendship).user, users(:poops)
       end
 
       should "assign a user friendship with the correct friend" do
-        get :new, friend_id: users(:jim).id
-        assert_equal assigns(:user_friendship).friend, users(:jim)
+        get :new, friend_id: users(:pees).id
+        assert_equal assigns(:user_friendship).friend, users(:pees)
       end
     end
   end
@@ -63,7 +63,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        sign_in users(:jason)
+        sign_in users(:poops)
       end
 
       context "with no friend_id" do
@@ -82,21 +82,21 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
       context "with a valid friend_id" do
         setup do
-          post :create, friend_id: users(:mike).id
+          post :create, friend_id: users(:farts).id
         end
 
         should "assign a friend object" do
-          assert_equal users(:mike), assigns(:friend)
+          assert_equal users(:farts), assigns(:friend)
         end
 
         should "assign a user_friendship object" do
           assert assigns(:user_friendship)
-          assert_equal users(:jason), assigns(:user_friendship).user
-          assert_equal users(:mike), assigns(:user_friendship).friend
+          assert_equal users(:poops), assigns(:user_friendship).user
+          assert_equal users(:farts), assigns(:user_friendship).friend
         end
 
         should "create a user friendship" do
-          assert users(:jason).friends.include?(users(:mike))
+          assert users(:poops).friends.include?(users(:farts))
         end
       end
 
