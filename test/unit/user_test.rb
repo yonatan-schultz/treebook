@@ -4,6 +4,7 @@ class UserTest < ActiveSupport::TestCase
   should have_many(:statuses)
   should have_many(:user_friendships)
   should have_many(:friends)
+  should have_many(:interests)
 
   test "a user should enter a first name" do
     user = User.new
@@ -43,10 +44,22 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "a user should have a profile name" do
-    user = User.new(first_name: 'Farts', last_name: 'Alot', email: 'farts@farts.net')
+    user = User.new(first_name: 'Sighs', last_name: 'On Occasion', email: 'sighs@sighs.net')
     user.password = user.password_confirmation = 'asdfasdf'
-
-    user.profile_name = 'fartsalot'
+    user.profile_name = 'sighsonoccasion'
     assert user.valid?
   end
+
+  test "that no error is raised when trying to access as user's interests" do
+    assert_nothing_raised do
+      users(:poops).interests
+    end
+  end
+
+  test "that creating interests works" do
+    users(:poops).interests << interests(:one)
+    assert users(:poops).interests.include?(interests(:one))
+  end
+
+
 end
