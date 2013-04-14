@@ -16,11 +16,16 @@ Treebook::Application.routes.draw do
   resources :user_friendships do
   end
 
-  resources :statuses
+  resources :statuses, :path => "updates", :path_names => {:new => "create"}
+  #path renames the path of the resource
+  #path_name allows individual renaming of the paths
+
   get 'feed', to: 'statuses#index', as: :feed
   root to: 'statuses#index'
 
   get '/:id', to: 'profiles#show', as: 'profile'
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
