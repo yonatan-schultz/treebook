@@ -25,7 +25,7 @@ Treebook::Application.routes.draw do
 
   get '/:id', to: 'profiles#show', as: 'profile'
 
-
+  resources :interests
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
