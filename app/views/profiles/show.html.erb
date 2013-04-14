@@ -2,12 +2,24 @@
   <h1><%= @user.full_name %></h1>
 </div>
 
-<% if @statuses %>
-  <% @statuses.each do |status| %>
-    <div class="well">
-      <%= status.content %>
-      <hr />
-      <%= link_to time_ago_in_words(status.created_at), status_path(status) %> ago
-    </div>
-  <% end %>
-<% end %>
+<div class="row">
+	<div class="span6">
+		<% if @statuses %>
+		  <% @statuses.each do |status| %>
+		    <div class="well">
+		      <%= status.content %>
+		      <hr />
+		      <%= link_to time_ago_in_words(status.created_at), status_path(status) %> ago
+		    </div>
+		  <% end %>
+		<% end %>
+	</div>
+	<div class="span3 well">
+			<legend>User Favorites</legend>
+				Favorite Film: <%= current_user.favorite_film %><br>
+				Favorite TV Show: <%= current_user.favorite_tv_show %><br>
+				Favorite Book: <%= current_user.favorite_book %><br>
+				Favorite Band: <%= current_user.favorite_band %>
+
+	</div>
+</div>
