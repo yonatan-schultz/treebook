@@ -3,7 +3,7 @@ class InterestsController < ApplicationController
 
 	def new
 		if params[:interest]
-			@interest = Interest.new(params[:interest])
+			@interest = current_user.interests.new(params[:interest])
 		else
 			flash[:error] = "Interest Name Required"
 		end
