@@ -17,13 +17,13 @@
 				</ul>
 				<ul class="nav pull-right">
 					<% if user_signed_in? %>
+						<li><%= link_to 'Friends', user_friendships_path %></li>
 						<li><%= link_to "Edit User", edit_user_registration_path %></li>
-						<li><%= link_to "Log Out", logout_path %><li>
+						<li><%= link_to "Log Out", logout_path %></li>
 					<% else %>
 						<li><%= link_to "Register", register_path %></li>
 						<li><%= link_to "Log in", login_path %></li>
 					<% end %>
-
 				</ul>
 			</div>
 		</div>
@@ -35,26 +35,27 @@
 				<%= message %>
 			</div>
 		<% end %>
-				<div class="row">
-			<div class="span2 bs-docs-sidebar">
-				<ul class="nav nav-list bs-docs-sidenav affix">
-						<% if user_signed_in? %>
-							<li><%= link_to "View Feed", feed_path %>
-							<li><%= link_to "Post a New Status", new_status_path %>
-							<li><%= link_to "Edit User", edit_user_registration_path  %>
-							<li><%= link_to "View Profile", profile_path(current_user.profile_name) %>
-							<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-						<% else %>
-							<li><%= link_to "Register", register_path %>
-							<li><%= link_to "Log In", login_path %>
-						<% end %>
-				</ul>
-			</div>
-			<div class="span10">
-				<%= yield %>
+			<div class="row">
+				<div class="span2 bs-docs-sidebar">
+					<ul class="nav nav-list bs-docs-sidenav affix">
+							<% if user_signed_in? %>
+								<li><%= link_to "View Feed", feed_path %></li>
+								<li><%= link_to "Post a New Status", new_status_path %></li>
+								<li><%= link_to "Edit User", edit_user_registration_path  %></li>
+								<li><%= link_to "View Profile", profile_path(current_user.profile_name) %></li>
+								<li><%= link_to 'Friends', user_friendships_path %></li>
+								<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+							<% else %>
+								<li><%= link_to "Register", register_path %></li>
+								<li><%= link_to "Log In", login_path %></li>
+							<% end %>
+					</ul>
+				</div>
+				<div class="span10">
+					<%= yield %>
+				</div>
 			</div>
 	</div>
-
-
+	
 </body>
 </html>

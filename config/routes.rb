@@ -14,6 +14,9 @@ Treebook::Application.routes.draw do
   end
 
   resources :user_friendships do
+    member do 
+      put :accept
+    end
   end
 
   resources :statuses, :path => "updates", :path_names => {:new => "create"}
