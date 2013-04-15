@@ -47,6 +47,6 @@ class UserTest < ActiveSupport::TestCase
     user.password = user.password_confirmation = 'asdfasdf'
 
     user.profile_name = 'fartsalot'
-    assert user.valid?
+    assert user.profile_name?
   end
 end

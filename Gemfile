@@ -34,4 +34,7 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'shoulda-context'
+  gem 'factory_girl_rails'
 end
+
+gem 'state_machine'

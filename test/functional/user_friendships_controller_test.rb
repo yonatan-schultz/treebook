@@ -96,7 +96,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
         end
 
         should "create a user friendship" do
-          assert users(:poops).friends.include?(users(:farts))
+          assert users(:poops).pending_friends.include?(users(:farts))
         end
       end
 
