@@ -42,7 +42,7 @@
 							<li><%= link_to "View Feed", feed_path %>
 							<li><%= link_to "Post a New Status", new_status_path %>
 							<li><%= link_to "Edit User", edit_user_registration_path  %>
-							<li><%= link_to "View Profile", feed_path %>
+							<li><%= link_to "View Profile", profile_path(current_user.profile_name) %>
 							<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %>
 						<% else %>
 							<li><%= link_to "Register", register_path %>

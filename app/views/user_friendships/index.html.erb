@@ -5,6 +5,9 @@
 <% @user_friendships.each do |friendship| %>
 	<% friend = friendship.friend %>
 	<div id="<%= dom_id(friendship) %>" class="friend row"> 
+		<div class="span1">
+			<%= link_to image_tag(friend.gravatar_url), profile_path(friend) %>
+		</div>
 	</div>
 	<div class="span7">
 		<strong><%= friend.full_name %></strong><br />
