@@ -16,10 +16,13 @@ class UserFriendshipsController < ApplicationController
   def create
     if params[:user_friendship] && params[:user_friendship].has_key?(:friend_id)
       @friend = User.where(profile_name: params[:user_friendship][:friend_id]).first
-      @user_friendship = current_user.user_friendships.new(friend: @friend)
-      @user_friendship.save
-      flash[:success] = "You are now friends with #{@friend.first_name}"
-      redirect_to profile_path(@friend)
+      @user_friendship = UserFriendship.request(current_user, @friend)
+      if @user_friendship.new_record?
+        flash[:error] = "There was a problem creating that friend request."
+      else
+        flash[:success] = "Friend request sent."
+      end
+        redirect_to profile_path(@friend)
     else
       flash[:error] = "Friend required"
       redirect_to root_path
@@ -43,6 +46,14 @@ class UserFriendshipsController < ApplicationController
   def edit
    @user_friendship = current_user.user_friendships.find(params[:id])
    @friend = @user_friendship.friend
+  end
+
+  def destroy
+    @user_friendship = current_user.user_friendships.find(params[:id])
+   if @user_friendship.destroy
+      flash[:success] = "Friendship Destroyed."
+    end
+    redirect_to user_friendships_path
   end
 
 end
