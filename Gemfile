@@ -7,6 +7,8 @@ gem 'rails', '3.2.6'
 
 gem 'devise'
 gem 'simple_form'
+gem 'draper'
+gem 'js-routes'
 
 group :development, :test do
 	gem 'sqlite3'
