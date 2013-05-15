@@ -11,3 +11,8 @@ one:
 two:
   user: poops
   user: farts
+
+blocked_by_poops:
+ user: poops
+ friend: blocked_friend
+ state: blocked

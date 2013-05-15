@@ -15,3 +15,9 @@ farts:
   last_name: "Sometimes"
   email: "farts@farts.net"
   profile_name: "fartssometimes"
+
+blocked_friend:
+  first_name: "Blocked"
+  last_name: "Friend"
+  email: "blocked@block.net"
+  profile_name: "youblockedme"
